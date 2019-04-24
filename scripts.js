@@ -1,3 +1,10 @@
+const app = document.getElementById('root');
+
+const container = document.createElement('div');
+container.setAttribute('class', 'container');
+
+app.appendChild(container);
+
 var request = new XMLHttpRequest();
 
 request.open('GET', 'https://api.pokemontcg.io/v1/cards?name=mimikyu', true)
@@ -8,7 +15,12 @@ request.onload = function() {
 
   if (request.status >= 200 && request.status < 400) {
     cards.forEach(card => {
-      console.log(card.imageUrlHiRes);
+
+      const img = document.createElement('img');
+      img.src = card.imageUrlHiRes;
+
+      container.appendChild(img);
+
     });
   } else {
     console.log('error')
