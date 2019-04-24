@@ -16,10 +16,16 @@ request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     cards.forEach(card => {
 
+      const box = document.createElement('div');
+      box.setAttribute('class', 'box');
+
       const img = document.createElement('img');
       img.src = card.imageUrlHiRes;
+      img.width = "300";
+      img.height = "400";
 
-      container.appendChild(img);
+      container.appendChild(box);
+      box.appendChild(img);
 
     });
   } else {
